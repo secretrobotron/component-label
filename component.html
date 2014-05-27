@@ -1,0 +1,59 @@
+<polymer-element name="ceci-label" attributes="label value, textalign" extends="ceci-element">
+  <ceci-definition>
+    {
+      "tags": ["label", "text"],
+      "thumbnail": "./thumbnail.png",
+      "name": "Label",
+      "broadcasts": {
+      },
+      "attributes": {
+        "label": {
+          "description": "Label text.",
+          "label": "Label Text",
+          "listener": true,
+          "editable": "text"
+        },
+        "value": {
+          "description": "Label value.",
+          "label": "Label Value",
+          "listener": true,
+          "editable": "text"
+        },
+        "textalign": {
+          "description": "Text alignment",
+          "label": "Text Alignment",
+          "editable": "select",
+          "options": ["left", "center", "right"]
+        }
+      }
+    }
+  </ceci-definition>
+  <template>
+    <style>
+      :host {
+        display: block;
+        width: 100%;
+        font-family: sans-serif;
+        font-size: 12pt;
+        background: white;
+        padding: 10px 0;
+      }
+
+      :host > div {
+        margin: 0 5px;
+      }
+    </style>
+    <div style="text-align: {{textalign}};"><strong>{{label}}</strong><span hidden?="{{value == ''}}"><strong>: </strong>{{value}}</span></div>
+    <shadow></shadow>
+  </template>
+  <script>
+    Polymer('ceci-label', {
+      value: '',
+      label: 'Label',
+      textalign: 'left',
+      ready: function () {
+        this.super();
+      }
+    });
+  </script>
+</polymer-element>
